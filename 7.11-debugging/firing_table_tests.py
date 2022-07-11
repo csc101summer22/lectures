@@ -29,6 +29,13 @@ class TestFiringTable(unittest.TestCase):
         hit = firing_table.is_hit(0, 1, 1)
         self.assertFalse(hit)
 
+    # NOTE: Before fixing any bugs, we ought to write unit tests illustrating
+    #       them -- we are in this position because existing tests were
+    #       presumably insufficient.
+    def test07_is_hit(self):
+        hit = firing_table.is_hit(10, 5, 1)
+        self.assertFalse(hit)
+
 
 if __name__ == "__main__":
     unittest.main()

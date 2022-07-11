@@ -44,11 +44,25 @@ def is_hit(shot, distance, width):
     :param width: A floating point target width
     :return: Whether or not the cannonball hits the target
     """
-    return distance <= shot
+    return distance <= shot <= distance + width
 
 
 def main():
-    return 0
+    height = get_float("How high is the cliff? ")
+    velocity = get_float("How fast is the cannonball? ")
+    distance = get_float("How far away is the target? ")
+    width = get_float("How wide is the target? ")
+
+    time = time_of_flight(height)
+    shot = range_of_shot(time, velocity)
+
+    # NOTE: These are mutually exclusive conditions; no single test case
+    #       could possibly exercise all of their code. For any non-trivial
+    #       program, one test case will certainly not be enough.
+    if is_hit(shot, distance, width):
+        print("Hit!")
+    else:
+        print("Miss!")
 
 
 if __name__ == "__main__":
